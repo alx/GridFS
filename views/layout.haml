@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title= @title || SiteConfig.title
+    %link{:href => '/stylesheets/main.css', :rel => 'stylesheet', :type => 'text/css'}
+    %script{:type => 'text/javascript', :src => '/js/jquery.js'}
+    %script{:type => 'text/javascript', :src => '/js/pikachoose-min.js'}
+    %script{:type => 'text/javascript', :src => '/js/master.js'}
+  %body
+    #container
+      #header
+        #logo
+          %h1
+            %a{:href => '/'}= SiteConfig.title
+      #content= yield
+      #footer
+        %p#legal= "&mdash; &copy; #{Time.now.strftime('%Y')} #{SiteConfig.author} &mdash;"

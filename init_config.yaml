@@ -1,0 +1,4 @@
+admin-login:
+  username: admin-name
+  password: admin-password
+  admin: true

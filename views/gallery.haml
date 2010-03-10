@@ -1,0 +1,7 @@
+%div{:class => "gallery"}
+- unless @images.nil?
+	%ul{:id => "pikame"}
+		- for image in @images do
+			%li
+				%img{:src => "/galibert/" + params[:gallery_id] + "/" + image[:filename]}
+				%span= image[:metadata]["name"]
