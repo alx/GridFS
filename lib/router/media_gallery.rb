@@ -107,6 +107,7 @@ get '/:site_name/gallery/:gallery' do
     
     medias.each do |media|
       gallery[:name] = media[:metadata]["gallery_name"]
+      gallery[:portfolio] = media[:metadata]["portfolio"]
       gallery[:portfolio_url] = media[:metadata]["portfolio_url"]
       gallery[:gallery_url] = media[:metadata]["gallery_url"]
       gallery[:medias] << media
