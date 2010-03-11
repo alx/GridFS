@@ -2,6 +2,7 @@ require 'rubygems'
 require 'haml'
 require 'ostruct'
 require 'htmlentities'
+require 'unicode'
 
 require 'sinatra' unless defined?(Sinatra)
 

@@ -55,7 +55,7 @@ get '/:site_name/portfolio/:portfolio' do
   
   portfolio = {:id => params[:portfolio], :name => params[:portfolio], :galleries => []}
   portfolio_parameters = {"site_name" => params[:site_name], 
-                          "portfolio" => params[:portfolio]}
+                          "portfolio_url" => params[:portfolio]}
   
   if medias = Media.find(options.db, portfolio_parameters)
     
@@ -93,7 +93,8 @@ get '/:site_name/gallery/:gallery' do
   content_type :json
   
   gallery = {:id => params[:gallery], :medias  => []}
-  gallery_parameters = {"site_name" => params[:site_name], "gallery_name" => params[:gallery]}
+  gallery_parameters = {"site_name" => params[:site_name],
+                        "gallery_url" => params[:gallery]}
   
   if medias = Media.find(options.db, gallery_parameters)
     
