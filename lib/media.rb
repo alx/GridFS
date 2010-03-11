@@ -64,8 +64,18 @@ class Media
     coder = HTMLEntities.new
     if db.collection('fs.files').find_one(object_id)
       metadata.each do |k, v|
+        case k
+        when "gallery_name"
+          db.collection('fs.files').update({:_id => object_id},
+                                           {"$set" => {"metadata.gallery_url" => Media.to_permalink(v)}})
+        when "portfolio"
+          db.collection('fs.files').update({:_id => object_id},
+                                           {"$set" => {"metadata.portfolio_url" => Media.to_permalink(v)}})
+        end
         db.collection('fs.files').update({:_id => object_id},
                                          {"$set" => {"metadata.#{k}" => coder.encode(v, :named)}})
+          
+        end
       end
     end
   end
@@ -215,7 +225,7 @@ class Media
   
   protected
   
-  def to_permalink(str)
+  def self.to_permalink(str)
     str = Unicode.normalize_KD(str).gsub(/[^\x00-\x7F]/n,'')
     str = str.gsub(/[^-_\s\w]/, ' ').downcase.squeeze(' ').tr(' ','-').gsub(/-+$/,'')
   end
