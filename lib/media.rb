@@ -75,7 +75,6 @@ class Media
         db.collection('fs.files').update({:_id => object_id},
                                          {"$set" => {"metadata.#{k}" => coder.encode(v, :named)}})
           
-        end
       end
     end
   end
