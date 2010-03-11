@@ -35,7 +35,8 @@ get '/:site_name/portfolios' do
       unless portfolios.has_key? portfolio_id
         portfolios[portfolio_id] = {:id => portfolio_id,
                                     :name => portfolio_id,
-                                    :thumb => media[:filename]}
+                                    :thumb => media[:filename],
+                                    :url => media[:metadata]["portfolio_url"]}
       end
     end
     
@@ -72,7 +73,8 @@ get '/:site_name/portfolio/:portfolio' do
       unless galleries.has_key? gallery_name
         galleries[gallery_name] = true
         portfolio[:galleries] << {:name => gallery_name,
-                                  :thumb => media[:filename]}
+                                  :thumb => media[:filename],
+                                  :url => media[:metadata]["gallery_url"]}
       end
     end
     
@@ -105,7 +107,8 @@ get '/:site_name/gallery/:gallery' do
     
     medias.each do |media|
       gallery[:name] = media[:metadata]["gallery_name"]
-      gallery[:portfolio] = media[:metadata]["portfolio"]
+      gallery[:portfolio_url] = media[:metadata]["portfolio_url"]
+      gallery[:gallery_url] = media[:metadata]["gallery_url"]
       gallery[:medias] << media
     end
     
