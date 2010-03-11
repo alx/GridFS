@@ -1,0 +1,7 @@
+Here are some mongo shell commands to update the database for maintenance:
+
+#
+# Add gallery_url metadata for each medi containing a gallery_name
+#
+db.fs.files.find({"metadata.gallery_name":{$exists:true}}).forEach(function(media){ media.metadata.gallery_url = media.metadata.gallery_name.toLowerCase().replace(" ", "-"); db.fs.files.save(media); } );
+db.fs.files.find({"metadata.portfolio":{$exists:true}}).forEach(function(media){ media.metadata.portfolio_url = media.metadata.portfolio.toLowerCase().replace(" ", "-"); db.fs.files.save(media); } );
