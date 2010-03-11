@@ -215,6 +215,11 @@ class Media
   
   protected
   
+  def to_permalink(str)
+    str = Unicode.normalize_KD(str).gsub(/[^\x00-\x7F]/n,'')
+    str = str.gsub(/[^-_\s\w]/, ' ').downcase.squeeze(' ').tr(' ','-').gsub(/-+$/,'')
+  end
+  
   def generate_thumbnails
     [{:height => 100, :width => 100},
       {:height => 300, :width => 300},

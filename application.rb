@@ -75,11 +75,6 @@ helpers do
     end
   end
   
-  def to_permalink(str)
-    str = Unicode.normalize_KD(self).gsub(/[^\x00-\x7F]/n,'')
-    str = str.gsub(/[^-_\s\w]/, ' ').downcase.squeeze(' ').tr(' ','-').gsub(/-+$/,'')
-  end
-  
 end
 
 # =======
