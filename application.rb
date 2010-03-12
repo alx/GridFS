@@ -207,6 +207,18 @@ post '/' do
     site_id = params[:metadata][:site_id]
   end
   
+  if params[:metadata] && 
+    params[:metadata][:gallery_name] && 
+    params[:metadata][:gallery_url].nil?
+    params[:metadata][:gallery_url] = Media.to_permalink(params[:metadata][:gallery_name])
+  end
+  
+  if params[:metadata] && 
+    params[:metadata][:portfolio] && 
+    params[:metadata][:portfolio_url].nil?
+    params[:metadata][:portfolio_url] = Media.to_permalink(params[:metadata][:portfolio])
+  end
+  
   if profile.is_admin? ||
     (site_id && profile.authorized?(site_id))
     
