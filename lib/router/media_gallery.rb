@@ -135,6 +135,8 @@ get '/:site_name/gallery/:gallery' do
       medias = [medias]
     end
     
+    medias.sort {|x,y| y[:metadata]["order"] <=> y[:metadata]["order"] }
+    
     medias.each do |media|
       gallery[:name] = media[:metadata]["gallery_name"]
       gallery[:portfolio] = media[:metadata]["portfolio"]
