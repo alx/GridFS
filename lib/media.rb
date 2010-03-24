@@ -122,7 +122,9 @@ class Media
         grid.each do |doc|
           files << Media.jsonify(doc)
         end
-        return files
+        
+        # Return files sorting them by metadata["order"] if possible
+        return files.sort_by{|x| x[:metadata]["order"].to_i}
       else
         return nil
       end
