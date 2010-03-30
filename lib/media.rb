@@ -59,6 +59,15 @@ class Media
     end
   end
   
+  def self.remove_metadata(db, metadatas)
+    dot_notation = {}
+    metadatas.each do |k, v|
+      dot_notation["metadata." + k] = v
+    end
+    p "remove metadata: #{dot_notation.inspect}"
+    db.collection('fs.files').remove(dot_notation)
+  end
+  
   def self.update(db, _id, metadata)
     object_id = Mongo::ObjectID.from_string(_id)
     coder = HTMLEntities.new

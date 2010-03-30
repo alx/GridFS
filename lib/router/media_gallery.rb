@@ -5,19 +5,15 @@
 get '/:site_name/portfolio/delete/:portfolio' do
   media_parameters = {"site_name" => params[:site_name],
                       "portfolio" => params[:portfolio]}
-                        
-  Media.find(options.db, media_parameters).each do |media|
-    Media.remove(options.db, media.id.to_s)
-  end
+  
+  Media.remove_metadata(options.db, media_parameters)
 end
 
 get '/:site_name/gallery/delete/:gallery' do
   media_parameters = {"site_name" => params[:site_name],
                       "gallery_url" => params[:gallery]}
-                        
-  Media.find(options.db, media_parameters).each do |media|
-    Media.remove(options.db, media.id.to_s)
-  end
+                      
+  Media.remove_metadata(options.db, media_parameters)
 end
 
 get '/:site_name/files/:filename' do
