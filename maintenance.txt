@@ -1,20 +1,21 @@
 Here are some mongo shell commands to update the database for maintenance:
 
 #
-# Launch and init database calls
+# Launch and init database calls in shell: mongo
 #
 
-in shell: mongo
 use grifs
-coll = db.fs.files
 
 #
 # Add gallery_url metadata for each medi containing a gallery_name
 #
-coll.find({"metadata.gallery_name":{$exists:true}}).forEach(function(media){ media.metadata.gallery_url = media.metadata.gallery_name.toLowerCase().replace(" ", "-"); db.fs.files.save(media); } );
-coll.find({"metadata.portfolio":{$exists:true}}).forEach(function(media){ media.metadata.portfolio_url = media.metadata.portfolio.toLowerCase().replace(" ", "-"); db.fs.files.save(media); } );
+
+db.fs.files.find({"metadata.gallery_name":{$exists:true}}).forEach(function(media){ media.metadata.gallery_url = media.metadata.gallery_name.toLowerCase().replace(" ", "-"); db.fs.files.save(media); } );
+db.fs.files.find({"metadata.portfolio":{$exists:true}}).forEach(function(media){ media.metadata.portfolio_url = media.metadata.portfolio.toLowerCase().replace(" ", "-"); db.fs.files.save(media); } );
 
 #
 # Delete item with specific metadata
 #
+
+db.fs.files.find({"metadata.portfolio":"news", "metadata.site_name":"egal16"}).forEach(function(media){ db.fs.files.remove(media); } );
 

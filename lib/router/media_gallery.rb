@@ -173,3 +173,21 @@ get '/:site_name/media/:media' do
     error 404
   end
 end
+
+delete '/:site_name/portfolio/:portfolio' do
+  media_parameters = {"site_name" => params[:site_name],
+                      "portfolio" => params[:portfolio]}
+                        
+  Media.find(options.db, media_parameters).each do |media|
+    Media.remove(options.db, media.id)
+  end
+end
+
+delete '/:site_name/gallery/:gallery' do
+  media_parameters = {"site_name" => params[:site_name],
+                      "gallery_url" => params[:gallery]}
+                        
+  Media.find(options.db, media_parameters).each do |media|
+    Media.remove(options.db, media.id)
+  end
+end
