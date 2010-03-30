@@ -7,6 +7,13 @@ get '/:site_name/portfolio/delete/:portfolio' do
                       "portfolio" => params[:portfolio]}
   
   Media.remove_metadata(options.db, media_parameters)
+  
+  json = {'message' => 'success'}.to_json
+  if callback = request.env["rack.request.query_hash"]["callback"]
+    "#{callback}(#{json})"
+  else
+    json
+  end
 end
 
 get '/:site_name/gallery/delete/:gallery' do
@@ -14,6 +21,13 @@ get '/:site_name/gallery/delete/:gallery' do
                       "gallery_url" => params[:gallery]}
                       
   Media.remove_metadata(options.db, media_parameters)
+
+  json = {'message' => 'success'}.to_json
+  if callback = request.env["rack.request.query_hash"]["callback"]
+    "#{callback}(#{json})"
+  else
+    json
+  end
 end
 
 get '/:site_name/files/:filename' do
