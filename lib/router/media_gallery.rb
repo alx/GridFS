@@ -7,7 +7,7 @@ get '/:site_name/portfolio/delete/:portfolio' do
                       "portfolio" => params[:portfolio]}
                         
   Media.find(options.db, media_parameters).each do |media|
-    Media.remove(options.db, media.id)
+    Media.remove(options.db, media.id.to_s)
   end
 end
 
@@ -16,7 +16,7 @@ get '/:site_name/gallery/delete/:gallery' do
                       "gallery_url" => params[:gallery]}
                         
   Media.find(options.db, media_parameters).each do |media|
-    Media.remove(options.db, media.id)
+    Media.remove(options.db, media.id.to_s)
   end
 end
 
