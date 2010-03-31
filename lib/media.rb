@@ -278,7 +278,7 @@ class Media
           GridStore.open(@db, @options[:filename], 'r') { |f| (@options["metadata"] != f.metadata) }
         # if file exists, but not the same metadata
         # change filename to avoid overwriting
-        empty, filemane, extension = @options[:filename]split(/(.*)\.(.*$)/)
+        empty, filemane, extension = @options[:filename].split(/(.*)\.(.*$)/)
         if filemane[/_(\d+)$/]
           @options[:filename] = filemane.gsub(/_(\d+)$/){|s| "_#{s.to_i + 1}"} + '.' + extension
         else
