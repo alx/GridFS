@@ -2,7 +2,7 @@
 # Media Gallery
 # -------------
 
-get '/:site_name/portfolio/delete/:portfolio' do
+get '/:site_name/portfolio/:portfolio/delete' do
   media_parameters = {"site_name" => params[:site_name],
                       "portfolio" => params[:portfolio]}
   
@@ -16,8 +16,9 @@ get '/:site_name/portfolio/delete/:portfolio' do
   end
 end
 
-get '/:site_name/gallery/delete/:gallery' do
+get '/:site_name/portfolio/:portfolio/gallery/:gallery/delete' do
   media_parameters = {"site_name" => params[:site_name],
+                      "portfolio" => params[:portfolio],
                       "gallery_url" => params[:gallery]}
                       
   Media.remove_metadata(options.db, media_parameters)
@@ -146,6 +147,42 @@ get '/:site_name/portfolio/:portfolio' do
     error 404
   end
   
+end
+
+# Return param gallery details
+get '/:site_name/portfolio/:portfolio/gallery/:gallery' do
+  content_type :json
+  
+  gallery = {:id => params[:gallery], :medias  => []}
+  gallery_parameters = {"site_name" => params[:site_name],
+                        "portfolio" => params[:portfolio],
+                        "gallery_url" => params[:gallery]}
+  
+  if medias = Media.find(options.db, gallery_parameters)
+    
+    # If Media class forced into json format
+    unless medias.kind_of?(Array)
+      medias = [medias]
+    end
+    
+    medias.each do |media|
+      gallery[:name] = media[:metadata]["gallery_name"]
+      gallery[:portfolio] = media[:metadata]["portfolio"]
+      gallery[:portfolio_url] = media[:metadata]["portfolio_url"]
+      gallery[:gallery_url] = media[:metadata]["gallery_url"]
+      gallery[:medias] << media
+    end
+    
+    # Send back json
+    if callback = request.env["rack.request.query_hash"]["callback"]
+      "#{callback}(#{gallery.to_json})"
+    else
+      gallery.to_json
+    end
+    
+  else
+    error 404
+  end
 end
 
 # Return param gallery details
