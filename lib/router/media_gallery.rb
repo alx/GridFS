@@ -4,7 +4,7 @@
 
 get '/:site_name/portfolio/:portfolio/delete' do
   media_parameters = {"site_name" => params[:site_name],
-                      "portfolio" => params[:portfolio]}
+                      "portfolio_url" => params[:portfolio]}
   
   Media.remove_metadata(options.db, media_parameters)
   
@@ -18,7 +18,7 @@ end
 
 get '/:site_name/portfolio/:portfolio/gallery/:gallery/delete' do
   media_parameters = {"site_name" => params[:site_name],
-                      "portfolio" => params[:portfolio],
+                      "portfolio_url" => params[:portfolio],
                       "gallery_url" => params[:gallery]}
                       
   Media.remove_metadata(options.db, media_parameters)
