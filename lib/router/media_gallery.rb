@@ -91,7 +91,7 @@ get '/:site_name/portfolios' do
     # Filter medias to sort galleries
     medias.each do |media|
       portfolio_id = media[:metadata]["portfolio"]
-      portfolio_url = media[:metadata]["portfolio"]
+      portfolio_url = media[:metadata]["portfolio_url"]
       unless portfolios.has_key? portfolio_id
         portfolios[portfolio_id] = {:id => portfolio_id,
                                     :name => portfolio_id,
@@ -130,7 +130,7 @@ get '/:site_name/portfolio/:portfolio' do
     # Filter medias to sort galleries
     medias.each do |media|
       gallery_name = media[:metadata]["gallery_name"]
-      gallery_url = media[:metadata]["gallery_name"]
+      gallery_url = media[:metadata]["gallery_url"]
       unless galleries.has_key? gallery_url
         galleries[gallery_url] = true
         portfolio[:galleries] << {:name => gallery_name,
