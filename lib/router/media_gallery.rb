@@ -188,6 +188,19 @@ get '/:site_name/portfolio/:portfolio/gallery/:gallery' do
 end
 
 # Return param gallery details
+get '/:site_name/portfolio/:portfolio/gallery/:gallery/:filename' do
+  if grid_file = Media.find(options.db, 
+                            {"site_name" => params[:site_name],
+                              "portfolio_url" => params[:portfolio],
+                              "gallery_url" => params[:gallery]}, 
+                            {:filename => params[:filename], :thumb => 300})
+    grid_file = grid_file.first if grid_file.kind_of?(Array)
+    content_type MIME::Types.type_for(grid_file[:filename]).to_s
+    GridStore.read(options.db, grid_file[:filename])
+  end
+end
+
+# Return param gallery details
 get '/:site_name/gallery/:gallery' do
   content_type :json
   
