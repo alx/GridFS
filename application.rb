@@ -87,7 +87,7 @@ get '/' do
   unless params.empty?
     fetch_media(params)
   else
-    haml :root
+    erb :root
   end
 end
 
