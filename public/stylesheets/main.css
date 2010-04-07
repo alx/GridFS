@@ -57,3 +57,164 @@ a:hover {
 #gallery ul{padding-left:0;width:510px;height:180px;margin:0;overflow:hidden;}
 #gallery ul li{float: left;border:1px solid #555;padding:2px;background:#777;margin:0 6px 4px 0;position:relative;overflow:hidden;}
 #gallery ul li div img{position:relative;cursor:pointer;}
+
+#folder_files_popup {
+	display:none;
+}
+
+#file_browser {
+	border-right: 1px solid #999;
+	float:left;
+	height:495px;
+	width:200px;
+}
+
+#ajout_files {
+	display:none;
+	float: left;
+	padding:3px;
+	height:50px;
+}
+
+#upload_files {
+	float: left;
+	height:50px;
+	padding:3px;
+	width:400px;
+}
+
+#upload_spinner{
+	display:none;
+}
+
+#uploadify_container{
+	float:right;
+	width:150px;
+}
+
+.uploadifyQueue{
+	display:none;
+}
+
+.folder_content{
+	width: 670px;
+	padding:4px;
+	float:left;
+}
+
+.folder_content_control{
+	
+}
+
+.folder_content_file {
+	border: 1px solid #999;
+	float:left;
+	height:210px;
+	margin:2px;
+	width:150px;
+}
+
+.folder_content_file img {
+	width:120px;
+}
+
+.add_directory input{
+	width:70px;
+}
+
+/*
+	Groups
+*/
+
+#group .item{
+	border:solid 1px #666;
+	float:left;
+	margin:3px;
+	padding:10px;
+	text-align:left;
+	width:100px;
+}
+
+#group .item p.title{
+	height:150px;
+	border:solid 1px black;
+	margin:0;
+	padding:0;
+	width:100px;
+}
+
+#group .item img{
+	width:100px;
+	height:100px;
+}
+/*
+ Crumbs
+*/
+
+ul#crumbs, li {
+list-style-type:none;
+padding:0;
+margin:0;
+}
+
+#crumbs {
+border:1px solid #dedede;
+height:2.3em;
+}
+
+#crumbs li {
+float:left;
+line-height:2.3em;
+padding-left:.75em;
+color:#777;
+}
+
+#crumbs li a {
+display:block;
+padding:0 15px 0 0;
+background:url('../images/crumbs.gif') no-repeat right center;
+}
+
+#crumbs li a:link, #crumbs li a:visited {
+text-decoration:none;
+color:#777;
+}
+
+#crumbs li a:hover, #crumbs li a:focus {
+color:#dd2c0d;
+}
+
+/*
+thumb display
+*/
+div.thumbwrapper {
+	background: #F0EEE0;
+	border: 1px solid #AFAB8E;
+	float: left;
+	height: 130px;
+	margin: 8px;
+	padding: 5px;
+	text-align: center;
+	width: 110px;
+}
+
+div.thumbwrapper img {
+	border: 2px solid silver;
+}
+
+a.highslide {
+	outline: none;
+	text-decoration: none;
+}
+
+#media_content{
+	margin-top:10px;
+}
+
+.media_detail img{
+	background: #F0EEE0;
+	border: 1px solid #AFAB8E;
+	float:left;
+	margin: 8px;
+	padding: 5px;
+}
