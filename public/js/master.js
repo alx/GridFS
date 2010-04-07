@@ -354,24 +354,6 @@ function populate_select_gallery(data){
 
 $(document).ready(function() {
 	
-	// Add validation methods
-	// helpers to verify that select has a value, otherwise tell user to enter a value
-	$.validator.addMethod(
-	        "selected_portfolio",
-	        function(value, element, regexp) {
-	            return this.optional(element) || ($('#select_portfolio').val() != undefined);
-	        },
-	        "Vous devez saisir un nom de Portfolio."
-	);
-	
-	$.validator.addMethod(
-	        "selected_gallery",
-	        function(value, element, regexp) {
-	            return this.optional(element) || ($('#select_gallery').val() != undefined);
-	        },
-	        "Vous devez saisir un nom de Gallerie."
-	);
-	
 	if($("#uploadify_media").length > 0){
 		initialize_media_uploadify();
 	}
