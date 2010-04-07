@@ -1,0 +1,66 @@
+<p>Service to manage web file storage. Technologies in use:</p>
+<ul>
+	<li><a href="http://nginx.net/">nginx</a></li>
+	<li><a href="http://www.sinatrarb.com/">sinatra</a></li>
+	<li><a href="http://www.mongodb.org">MongoDB</a></li>
+	<li><a href="http://www.mongodb.org/display/DOCS/GridFS+Specification">GridFs</a></li>
+</ul>
+
+<hr/>
+
+<input type="hidden" name="gridfs_url" value="http://your.gridfs-system.com" id="gridfs_url">
+<input type="hidden" name="gridfs_site" value="demo" id="gridfs_site">
+<input type="hidden" name="gridfs_username" value="admin_username" id="gridfs_username">
+<input type="hidden" name="gridfs_password" value="admin_password" id="gridfs_password">
+
+<div id="media_content">
+</div>
+
+<br clear='left'/>
+
+<p>
+	<input alt="#TB_inline?height=300&width=400&inlineId=uploadDiv" class="thickbox" type="button" value="Ajouter Media" />  </p>
+
+<div id="uploadDiv" style='display:none;'>
+	<form id="uploadForm">
+
+	<table border="0" cellspacing="5" cellpadding="5" style="padding-top:10px">
+		<tr><td colspan='2'>Portfolio</td></tr>
+		<tr>
+			<td>
+				<select name="portfolio" id="select_portfolio">
+					<option value="">S&eacute;lectionner un portfolio</option>
+					<option>----</option>
+					<option value="add_portfolio">Ajouter un portfolio</option>
+					<option>----</option>
+				</select>
+			</td>
+			<td id="new_portfolio_input" style="display:none;">
+				<label for='new_portfolio'>Nouveau Portfolio:</label><br/>
+				<input type="text" name="new_portfolio" value="" id="new_portfolio" >
+			</td>
+		</tr>
+	</table>
+	
+	<table border="0">
+		<tr><td colspan='2'>Gallerie</td></tr>
+		<tr>
+			<td>
+				<select name="gallery" id="select_gallery">
+					<option value="">S&eacute;lectionner une gallerie</option>
+					<option>----</option>
+					<option value="add_gallery">Ajouter une gallerie</option>
+					<option>----</option>
+				</select>
+			</td>
+			<td id="new_gallery_input" style="display:none;">
+				<label for='new_gallery'>Nouvelle Gallerie:</label><br/>
+				<input type="text" name="new_gallery" value="" id="new_gallery">
+			</td>
+		</tr>
+	</table>
+	
+	<div id="uploadify_media" style="float:right"></div>
+	<img id="upload_spinner" src="/images/spinner_16.gif"/>
+	</form>
+</div>
