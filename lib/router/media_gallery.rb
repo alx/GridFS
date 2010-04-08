@@ -49,6 +49,10 @@ get '/:site_name/thumb/:filename' do
   if grid_file = Media.find(options.db, 
                             {"site_name" => params[:site_name]}, 
                             {:filename => params[:filename], :thumb => 300})
+    grid_file = grid_file.first if grid_file.kind_of?(Array)
+    content_type MIME::Types.type_for(grid_file[:filename]).to_s
+    GridStore.read(options.db, grid_file[:filename])
+  end
 end
 
 get '/:site_name/100/:filename' do
