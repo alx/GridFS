@@ -176,14 +176,6 @@ get '/site/:site_id/media/:filename' do
                               "app_name" => 'media'}})
 end
 
-get '/:site_id/:filename' do
-  fetch_media(params)
-end
-
-get '/:site_id/:app_name/:filename' do
-  fetch_media(params)
-end
-
 get '/download/:site_id/:filename' do
   fetch_media(params)
 end
